@@ -14,9 +14,12 @@
 from openai import OpenAI
 client = OpenAI()
 
-audio_file= open("test2.wav", "rb")
+audio_file= open("spoelen.wav", "rb")
 transcription = client.audio.transcriptions.create(
   model="whisper-1", 
   file=audio_file
 )
+
+t = open("spoelen.txt", "wt" )
+t.write(transcription.text)
 print(transcription.text)
